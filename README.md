@@ -1,73 +1,80 @@
-# Welcome to your Lovable project
+### Interactive Prompt Playground
 
-## Project info
+## 🚀 How to Run the Playground
 
-**URL**: https://lovable.dev/projects/c3e7d3de-ffe2-40b9-847b-02add4b9c8d7
+### 1. Clone the Repository
+   
+`git clone https://github.com/srujana-namburu/interactive-prompt-playground.git
+   cd interactive-prompt-playground
+`
+### 2. Install Dependencies
+Make sure you have Node.js and npm installed. Then run:
 
-## How can I edit this code?
+`npm install`
 
-There are several ways of editing your application.
+### 3. Set Up Environment Variables
+Create a .env file in the root directory and add your OpenAI API key:
 
-**Use Lovable**
+`OPENAI_API_KEY=your-api-key-here`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c3e7d3de-ffe2-40b9-847b-02add4b9c8d7) and start prompting.
+### 4. Start the App
 
-Changes made via Lovable will be committed automatically to this repo.
+`npm run dev`
 
-**Use your preferred IDE**
+## ✨ Description of Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 1. Prompt Input
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Users enter a system prompt (e.g., "You are a helpful assistant.") and a user prompt (e.g., "Describe the iPhone 15 Pro Max").
 
-Follow these steps:
+This allows for precise customization and persona tuning.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 2. Parameter Control
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Temperature: Adjusts randomness (0.0 = predictable, 1.2 = highly creative).
 
-# Step 3: Install the necessary dependencies.
-npm i
+Max Tokens: Limits response length (50, 150, 300 options).
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+Presence Penalty: Discourages new topics (0.0 = off, 1.5 = strong).
 
-**Edit a file directly in GitHub**
+Frequency Penalty: Reduces repetition (0.0 = off, 1.5 = strong).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Stop Sequence: Stops output when a specified token or phrase is encountered.
 
-**Use GitHub Codespaces**
+### 3. Model Selection
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Supports both gpt-3.5-turbo and gpt-4.
 
-## What technologies are used for this project?
+Allows flexible testing across different model capabilities.
 
-This project is built with:
+### 4. Response Modes
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Single Response Mode (Default):
 
-## How can I deploy this project?
+Generates a single response.
 
-Simply open [Lovable](https://lovable.dev/projects/c3e7d3de-ffe2-40b9-847b-02add4b9c8d7) and click on Share -> Publish.
+Clicking Generate Again creates a new variation (shown below the previous one).
 
-## Can I connect a custom domain to my Lovable project?
+Batched Mode:
 
-Yes, you can!
+When checked, generates multiple variations based on diverse parameter combinations.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+A Compare button lets users summarize or select the best version among all.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Output Grid Example (for prompt: “Write a product description for the iPhone 15 Pro”)
+
+| Temperature | Max Tokens | Presence Penalty | Frequency Penalty | Model         | Output Summary                              |
+| ----------- | ---------- | ---------------- | ----------------- | ------------- | ------------------------------------------- |
+| 0.0         | 50         | 0.0              | 0.0               | gpt-3.5-turbo | Short, direct specs-based description       |
+| 0.7         | 150        | 0.0              | 1.5               | gpt-3.5-turbo | Balanced tone with some creativity          |
+| 1.2         | 300        | 1.5              | 0.0               | gpt-4         | Long, rich, very imaginative description    |
+| 0.7         | 150        | 1.5              | 1.5               | gpt-4         | Highly tuned, focused on key selling points |
+| 1.2         | 300        | 0.0              | 0.0               | gpt-3.5-turbo | Creative but sometimes repetitive           |
+
+
+## 🧠 Reflection on Parameter Impact
+When comparing outputs, it was clear that temperature had the most noticeable effect on the tone and creativity. A low temperature (e.g., 0.0) yielded concise, fact-driven product descriptions — ideal for technical documentation. In contrast, higher temperatures (1.2) produced expressive, dynamic text that could be used for marketing or storytelling. This made it easier to experiment with voice and tone.
+
+The penalty settings fine-tuned the output style. A high presence penalty encouraged sticking closely to the product theme, while a high frequency penalty reduced repetitive content, especially in longer outputs. Together, these controls gave users the flexibility to shape responses to be more structured or free-flowing, depending on the use case. The batched mode further helped in comparing how small changes could dramatically alter output quality.
+
+
