@@ -48,8 +48,6 @@ export const ConfigurationPanel = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="gemini-1.5-flash">Gemini 1.5 Flash</SelectItem>
-                <SelectItem value="gemini-1.5-pro">Gemini 1.5 Pro</SelectItem>
-                <SelectItem value="gemini-1.0-pro">Gemini 1.0 Pro</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -177,8 +175,8 @@ export const ConfigurationPanel = () => {
             <Slider
               value={[config.presencePenalty]}
               onValueChange={([value]) => updateConfig({ presencePenalty: value })}
-              min={-2}
-              max={2}
+              min={0}
+              max={1.5}
               step={0.1}
               className="w-full"
             />
@@ -196,8 +194,8 @@ export const ConfigurationPanel = () => {
             <Slider
               value={[config.frequencyPenalty]}
               onValueChange={([value]) => updateConfig({ frequencyPenalty: value })}
-              min={-2}
-              max={2}
+              min={0}
+              max={1.5}
               step={0.1}
               className="w-full"
             />
