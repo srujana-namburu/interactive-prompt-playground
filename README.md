@@ -1,4 +1,4 @@
-### Interactive Prompt Playground
+# Interactive Prompt Playground
 
 ## 🚀 How to Run the Playground
 
