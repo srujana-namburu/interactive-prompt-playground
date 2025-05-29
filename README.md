@@ -15,7 +15,7 @@ Make sure you have Node.js and npm installed. Then run:
 ### 3. Set Up Environment Variables
 Create a .env file in the root directory and add your OpenAI API key:
 
-`OPENAI_API_KEY=your-api-key-here`
+`VITE_GEMINI_API_KEY=your-api-key-here`
 
 ### 4. Start the App
 
