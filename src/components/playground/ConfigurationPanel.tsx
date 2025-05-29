@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
@@ -12,7 +11,7 @@ import { usePlayground } from './PlaygroundContext';
 import { Play, Settings, Sparkles } from 'lucide-react';
 
 export const ConfigurationPanel = () => {
-  const { config, updateConfig, runPlayground, isLoading } = usePlayground();
+  const { config, updateConfig, runPlayground, isLoading, batched, setBatched, sampleCount, setSampleCount } = usePlayground();
 
   const productPresets = [
     'iPhone 15 Pro',
@@ -216,6 +215,41 @@ export const ConfigurationPanel = () => {
               placeholder="Enter comma-separated sequences..."
             />
           </div>
+        </CardContent>
+      </Card>
+
+      {/* Batched Mode Controls */}
+      <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl shadow-blue-100/25 hover:shadow-2xl hover:shadow-blue-100/40 transition-all duration-300">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center space-x-2 text-gray-800">
+            <span>Batched Mode</span>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="flex items-center gap-3">
+            <input
+              type="checkbox"
+              id="batched"
+              checked={batched}
+              onChange={e => setBatched(e.target.checked)}
+              className="w-4 h-4 border-gray-300 rounded focus:ring-blue-500"
+            />
+            <label htmlFor="batched" className="text-sm text-gray-700">Enable Batched Mode</label>
+          </div>
+          {batched && (
+            <div className="flex items-center gap-2">
+              <label htmlFor="sampleCount" className="text-sm text-gray-700">Number of Samples:</label>
+              <input
+                id="sampleCount"
+                type="number"
+                min={2}
+                max={12}
+                value={sampleCount}
+                onChange={e => setSampleCount(Number(e.target.value))}
+                className="w-16 border-gray-200 rounded px-2 py-1 text-sm"
+              />
+            </div>
+          )}
         </CardContent>
       </Card>
 
